@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,106 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BarrysBootcamp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="0zM-T7-jLb" customClass="LocationControl" customModule="BarrysBootcamp" customModuleProvider="target">
+                                <rect key="frame" x="-1" y="20" width="377" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="syQ-UT-0s4"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Studios"/>
+                                    <segment title="Instructors"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fgf-Ju-4WI"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbg-KN-iyP">
+                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GBB-QU-Upc">
+                                        <rect key="frame" x="8" y="50" width="359" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Sgf-aa-WSn"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="6Pz-Ou-SRc"/>
+                                        </connections>
+                                    </searchBar>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Hf-Ri-mcC">
+                                        <rect key="frame" x="0.0" y="121" width="375" height="448"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="NdR-CR-c5m">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="instructoCell" reuseIdentifier="instructorCell" id="CmQ-Fg-yb2" customClass="InstructorCollectionViewCell" customModule="BarrysBootcamp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="x68-Sk-ybz"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="dPo-kb-Xef"/>
+                                        </connections>
+                                    </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bn-O1-p7b">
+                                        <rect key="frame" x="0.0" y="110" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.86499255952380949" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="285-A1-UR2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Hf-Ri-mcC" secondAttribute="bottom" id="3wj-N0-1jI"/>
+                                    <constraint firstAttribute="trailing" secondItem="GBB-QU-Upc" secondAttribute="trailing" constant="8" id="Az9-Zu-DpR"/>
+                                    <constraint firstItem="GBB-QU-Upc" firstAttribute="top" secondItem="Lbg-KN-iyP" secondAttribute="top" constant="50" id="JAf-WP-Rhm"/>
+                                    <constraint firstItem="GBB-QU-Upc" firstAttribute="leading" secondItem="Lbg-KN-iyP" secondAttribute="leading" constant="8" id="Ogj-AW-uVs"/>
+                                    <constraint firstItem="8Bn-O1-p7b" firstAttribute="top" secondItem="GBB-QU-Upc" secondAttribute="bottom" constant="10" id="QFi-mS-E7l"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Hf-Ri-mcC" secondAttribute="trailing" id="ZR0-VW-RFp"/>
+                                    <constraint firstItem="5Hf-Ri-mcC" firstAttribute="leading" secondItem="Lbg-KN-iyP" secondAttribute="leading" id="gwa-Pg-0kY"/>
+                                    <constraint firstItem="5Hf-Ri-mcC" firstAttribute="top" secondItem="8Bn-O1-p7b" secondAttribute="bottom" constant="10" id="n5a-Z0-yue"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Bn-O1-p7b" secondAttribute="trailing" id="tfk-nB-OLS"/>
+                                    <constraint firstItem="8Bn-O1-p7b" firstAttribute="leading" secondItem="Lbg-KN-iyP" secondAttribute="leading" id="z7a-uQ-7Fj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0zM-T7-jLb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-1" id="6xu-je-aUx"/>
+                            <constraint firstItem="Lbg-KN-iyP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8ZB-HB-zNI"/>
+                            <constraint firstItem="0zM-T7-jLb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Krd-r0-Kzf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lbg-KN-iyP" secondAttribute="trailing" id="gW0-up-IUb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0zM-T7-jLb" secondAttribute="trailing" constant="-1" id="nDu-nk-XU0"/>
+                            <constraint firstItem="Lbg-KN-iyP" firstAttribute="top" secondItem="0zM-T7-jLb" secondAttribute="bottom" constant="8" id="q6d-PU-p2v"/>
+                            <constraint firstItem="Lbg-KN-iyP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sNw-JQ-brC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="instructorsCollection" destination="5Hf-Ri-mcC" id="MNX-r2-W8Q"/>
+                        <outlet property="instructorsView" destination="Lbg-KN-iyP" id="Pq8-cX-hor"/>
+                        <outlet property="searchBar" destination="GBB-QU-Upc" id="b2k-M0-fi3"/>
+                        <outlet property="segmentedControl" destination="0zM-T7-jLb" id="gZ1-sx-5Fs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>
