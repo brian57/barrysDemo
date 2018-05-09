@@ -17,8 +17,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let numberOfItemsPerRow: CGFloat = 2.0
     let leftAndRightPaddings: CGFloat = 16.0
     let screenSize = UIScreen.main.bounds
-    let cellReuseIdentifer = "instructorCell"
+    
     private let cellReuseIdentifier = "collectionCell"
+    
+    // instructors stub data
     var instructors: [Instructor] = [
         Instructor(name: "Britnney", image: "Image"),
         Instructor(name: "Chris", image: "Image-1"),
@@ -31,6 +33,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         Instructor(name: "Bryer", image: "Image-2")
     ]
     
+    // current list of instructors shown in colection
     var searchedInstructors: [Instructor] = []
 
     @IBOutlet weak var instructorsCollection: UICollectionView!
@@ -38,6 +41,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var instructorsView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Location Name"
+        
+        // customize search bar
+        searchBar.placeholder = "Search"
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
+        if let textField = searchBar.subviews.first?.subviews.compactMap({ $0 as? UITextField }).first {
+            textField.subviews.first?.isHidden = true
+            textField.layer.backgroundColor = UIColor.barrysLightGray.cgColor
+            textField.layer.cornerRadius = 1
+            textField.layer.masksToBounds = true
+        }
+        
+        searchedInstructors = instructors
+        let nib = UINib(nibName: "InstructorCollectionViewCell", bundle: nil)
+        instructorsCollection.register(nib, forCellWithReuseIdentifier: cellReuseIdentifier)
+    }
+
+
     @IBAction func segmentedControlValueChanged(_ sender: LocationControl) {
         if (sender.selectedSegmentIndex == 0 ) {
             instructorsView.isHidden = true
@@ -81,24 +105,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         instructorsCollection.reloadData()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        searchBar.placeholder = "Search"
-        searchBar.searchBarStyle = UISearchBarStyle.minimal
-        
-        if let textField = searchBar.subviews.first?.subviews.flatMap({ $0 as? UITextField }).first {
-            textField.subviews.first?.isHidden = true
-            textField.layer.backgroundColor = UIColor.barrysLightGray.cgColor
-            textField.layer.cornerRadius = 1
-            textField.layer.masksToBounds = true
-        }
-        searchedInstructors = instructors
-        let nib = UINib(nibName: "InstructorCollectionViewCell", bundle: nil)
-        instructorsCollection.register(nib, forCellWithReuseIdentifier: cellReuseIdentifier)
-    }
-
 
 }
 

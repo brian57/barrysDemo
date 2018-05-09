@@ -14,7 +14,6 @@ class InstructorCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         name.text = "Instructor Name"
     }
     
@@ -32,7 +31,6 @@ class InstructorCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
         
     }
