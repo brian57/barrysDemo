@@ -18,6 +18,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let leftAndRightPaddings: CGFloat = 16.0
     let screenSize = UIScreen.main.bounds
     
+    @IBOutlet weak var bottomNav: UIView!
+    
     private let cellReuseIdentifier = "collectionCell"
     
     // instructors stub data
@@ -37,18 +39,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var searchedInstructors: [Instructor] = []
 
     @IBOutlet weak var instructorsCollection: UICollectionView!
-    @IBOutlet weak var segmentedControl: LocationControl!
     @IBOutlet weak var instructorsView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var topTabsStack: UIStackView!
+    @IBOutlet weak var tabsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Location Name"
+        bottomNav.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
+        bottomNav.layer.borderWidth = 1.0
+        
+        // change color of filterButton
+        let filterImg = UIImage(named: "slider")
+        let tintedImg = filterImg?.withRenderingMode(.alwaysTemplate)
+        filterButton.setImage(tintedImg, for: .normal)
+        filterButton.setImage(tintedImg, for: .highlighted )
+        filterButton.tintColor = UIColor.barrysDarkGray
+        
+        tabsView.layer.borderColor = UIColor.barrysGray.cgColor
+        tabsView.layer.borderWidth = 1.0
         
         // customize search bar
-        searchBar.placeholder = "Search"
-        searchBar.searchBarStyle = UISearchBarStyle.minimal
         if let textField = searchBar.subviews.first?.subviews.compactMap({ $0 as? UITextField }).first {
             textField.subviews.first?.isHidden = true
             textField.layer.backgroundColor = UIColor.barrysLightGray.cgColor
@@ -59,19 +73,49 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         searchedInstructors = instructors
         let nib = UINib(nibName: "InstructorCollectionViewCell", bundle: nil)
         instructorsCollection.register(nib, forCellWithReuseIdentifier: cellReuseIdentifier)
-    }
-
-
-    @IBAction func segmentedControlValueChanged(_ sender: LocationControl) {
-        if (sender.selectedSegmentIndex == 0 ) {
-            instructorsView.isHidden = true
-        } else {
-            instructorsView.isHidden = false
-        }
-         sender.changeSelectedIndex(to: sender.selectedSegmentIndex)
         
+        // bind tab buttons to tabClicked() method
+        for subview in topTabsStack.subviews {
+            if let button = subview as? UIButton {
+                button.addTarget(self, action: #selector(tabClicked(_:)), for: .touchUpInside)
+            }
+        }
+        
+        // add border
+        topTabsStack.layer.borderWidth = 1.0
+        topTabsStack.layer.borderColor = UIColor.red.cgColor
     }
     
+    // handle buttons at top of page being clicked
+    @objc func tabClicked(_ sender: UIButton) {
+        // update styling
+        for subview in topTabsStack.subviews {
+            if let button = subview as? UIButton {
+                var color = UIColor.gray
+                if button == sender {
+                    color = UIColor.black
+                }
+                
+                button.setTitleColor(color, for: .normal)
+            }
+        }
+        
+        if let title = sender.titleLabel?.text {
+            switch(title) {
+            case "Studios":
+                print("STUDIOS CLICKED")
+                instructorsView.isHidden = true
+            case "Instructors":
+                instructorsView.isHidden = false
+                print("INSTRUCTORS CLICKED")
+            default:
+                print("DEFAULT CLICKED")
+            }
+        }
+
+    }
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchedInstructors.count
     }

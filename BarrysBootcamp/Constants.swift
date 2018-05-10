@@ -18,6 +18,11 @@ extension UIColor {
     
     public class var barrysLightGray: UIColor
     {
-        return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
+        return UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
+    }
+    
+    public class var barrysDarkGray: UIColor
+    {
+        return UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
     }
 }

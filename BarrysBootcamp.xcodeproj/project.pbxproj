@@ -15,7 +15,6 @@
 		D3D26CC220A2148500A9764F /* BarrysBootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26CC120A2148500A9764F /* BarrysBootcampTests.swift */; };
 		D3D26CCE20A2164400A9764F /* InstructorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26CCC20A2164400A9764F /* InstructorCollectionViewCell.swift */; };
 		D3D26CCF20A2164400A9764F /* InstructorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D26CCD20A2164400A9764F /* InstructorCollectionViewCell.xib */; };
-		D3D26D3820A25EFB00A9764F /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26D3720A25EFB00A9764F /* LocationControl.swift */; };
 		D3D26D3A20A27FC400A9764F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26D3920A27FC400A9764F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		D3D26CC320A2148500A9764F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3D26CCC20A2164400A9764F /* InstructorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3D26CCD20A2164400A9764F /* InstructorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructorCollectionViewCell.xib; sourceTree = "<group>"; };
-		D3D26D3720A25EFB00A9764F /* LocationControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		D3D26D3920A27FC400A9764F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +87,6 @@
 				D3D26CAE20A2148300A9764F /* ViewController.swift */,
 				D3D26D3920A27FC400A9764F /* Constants.swift */,
 				D3D26CB020A2148300A9764F /* Main.storyboard */,
-				D3D26D3720A25EFB00A9764F /* LocationControl.swift */,
 				D3D26CCC20A2164400A9764F /* InstructorCollectionViewCell.swift */,
 				D3D26CCD20A2164400A9764F /* InstructorCollectionViewCell.xib */,
 				D3D26CB320A2148500A9764F /* Assets.xcassets */,
@@ -213,7 +210,6 @@
 				D3D26D3A20A27FC400A9764F /* Constants.swift in Sources */,
 				D3D26CAF20A2148300A9764F /* ViewController.swift in Sources */,
 				D3D26CCE20A2164400A9764F /* InstructorCollectionViewCell.swift in Sources */,
-				D3D26D3820A25EFB00A9764F /* LocationControl.swift in Sources */,
 				D3D26CAD20A2148300A9764F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
