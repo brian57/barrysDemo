@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D391002B20A4F6E400385940 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D391002A20A4F6E400385940 /* ButtonWithImage.swift */; };
+		D3ADC76E20A3D4C800F03716 /* InstructorFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADC76D20A3D4C800F03716 /* InstructorFilterViewController.swift */; };
 		D3D26CAD20A2148300A9764F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26CAC20A2148300A9764F /* AppDelegate.swift */; };
 		D3D26CAF20A2148300A9764F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D26CAE20A2148300A9764F /* ViewController.swift */; };
 		D3D26CB220A2148300A9764F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3D26CB020A2148300A9764F /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D391002A20A4F6E400385940 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		D3ADC76D20A3D4C800F03716 /* InstructorFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorFilterViewController.swift; sourceTree = "<group>"; };
 		D3D26CA920A2148300A9764F /* BarrysBootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarrysBootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D26CAC20A2148300A9764F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3D26CAE20A2148300A9764F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		D3D26CAB20A2148300A9764F /* BarrysBootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				D391002A20A4F6E400385940 /* ButtonWithImage.swift */,
+				D3ADC76D20A3D4C800F03716 /* InstructorFilterViewController.swift */,
 				D3D26CAC20A2148300A9764F /* AppDelegate.swift */,
 				D3D26CAE20A2148300A9764F /* ViewController.swift */,
 				D3D26D3920A27FC400A9764F /* Constants.swift */,
@@ -207,6 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3ADC76E20A3D4C800F03716 /* InstructorFilterViewController.swift in Sources */,
+				D391002B20A4F6E400385940 /* ButtonWithImage.swift in Sources */,
 				D3D26D3A20A27FC400A9764F /* Constants.swift in Sources */,
 				D3D26CAF20A2148300A9764F /* ViewController.swift in Sources */,
 				D3D26CCE20A2164400A9764F /* InstructorCollectionViewCell.swift in Sources */,

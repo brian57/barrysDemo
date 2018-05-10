@@ -13,9 +13,9 @@ struct Instructor {
     var image: String
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class ViewController: UIViewController {
     let numberOfItemsPerRow: CGFloat = 2.0
-    let leftAndRightPaddings: CGFloat = 16.0
+    let leftAndRightPaddings: CGFloat = 40.0
     let screenSize = UIScreen.main.bounds
     
     @IBOutlet weak var bottomNav: UIView!
@@ -24,18 +24,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // instructors stub data
     var instructors: [Instructor] = [
-        Instructor(name: "Britnney", image: "Image"),
+        Instructor(name: "Alycia", image: "Alycia"),
         Instructor(name: "Chris", image: "Image-1"),
-        Instructor(name: "Bryer", image: "Image-2"),
-        Instructor(name: "Kelly", image: "Image"),
+        Instructor(name: "Jake G", image: "JakeG"),
+        Instructor(name: "Josey", image: "Josey"),
+        Instructor(name: "Alycia", image: "Alycia"),
         Instructor(name: "Chris", image: "Image-1"),
-        Instructor(name: "Bryer", image: "Image-2"),
-        Instructor(name: "Britnney", image: "Image"),
-        Instructor(name: "Chris", image: "Image-1"),
-        Instructor(name: "Bryer", image: "Image-2")
+        Instructor(name: "Jake G", image: "JakeG"),
+        Instructor(name: "Josey", image: "Josey")
     ]
     
-    // current list of instructors shown in colection
+    // current list of instructors shown in collection view
     var searchedInstructors: [Instructor] = []
 
     @IBOutlet weak var instructorsCollection: UICollectionView!
@@ -44,6 +43,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var topTabsStack: UIStackView!
     @IBOutlet weak var tabsView: UIView!
+    @IBOutlet weak var findAClass: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         navigationItem.title = "Location Name"
         bottomNav.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
         bottomNav.layer.borderWidth = 1.0
-        
+
         // change color of filterButton
         let filterImg = UIImage(named: "slider")
         let tintedImg = filterImg?.withRenderingMode(.alwaysTemplate)
@@ -62,6 +62,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         tabsView.layer.borderColor = UIColor.barrysGray.cgColor
         tabsView.layer.borderWidth = 1.0
         
+        navigationController?.navigationBar.shadowImage = UIImage()
+
         // customize search bar
         if let textField = searchBar.subviews.first?.subviews.compactMap({ $0 as? UITextField }).first {
             textField.subviews.first?.isHidden = true
@@ -81,9 +83,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
         }
         
-        // add border
-        topTabsStack.layer.borderWidth = 1.0
-        topTabsStack.layer.borderColor = UIColor.red.cgColor
     }
     
     // handle buttons at top of page being clicked
@@ -103,42 +102,58 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if let title = sender.titleLabel?.text {
             switch(title) {
             case "Studios":
-                print("STUDIOS CLICKED")
                 instructorsView.isHidden = true
             case "Instructors":
                 instructorsView.isHidden = false
-                print("INSTRUCTORS CLICKED")
             default:
                 print("DEFAULT CLICKED")
             }
         }
 
     }
+    
+    @IBAction func unwindToInstructors(sender: UIStoryboardSegue) {
+        // TODO add code to deal with return segue from filter page
+    }
 
 
+}
+
+extension ViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchedInstructors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = instructorsCollection.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! InstructorCollectionViewCell
-
+        
         cell.setName(name: searchedInstructors[indexPath.item].name)
         cell.setImage(name: searchedInstructors[indexPath.item].image)
         
         return cell
     }
     
+}
+
+extension ViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let width = (screenSize.width - leftAndRightPaddings)/numberOfItemsPerRow
         return CGSize(width: width, height: width + 20)
     }
     
+}
 
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+}
 
+extension ViewController: UISearchBarDelegate {
+    
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        
         if searchText == "" {
             searchedInstructors = instructors
         } else {
@@ -149,6 +164,4 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         instructorsCollection.reloadData()
     }
-
 }
-
