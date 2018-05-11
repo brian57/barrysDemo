@@ -134,10 +134,15 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
     
+
 }
 
 extension ViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "jumpToInstructor", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let width = (screenSize.width - leftAndRightPaddings)/numberOfItemsPerRow
@@ -163,5 +168,13 @@ extension ViewController: UISearchBarDelegate {
             }
         }
         instructorsCollection.reloadData()
+    }
+}
+
+class CustomView: UIView {
+    @IBInspectable var widthRatio: CGFloat = 1.0
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: widthRatio, height: 1)
     }
 }
