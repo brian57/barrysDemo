@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var bottomNav: UIView!
     
-    private let cellReuseIdentifier = "collectionCell"
+    let cellReuseIdentifier = "collectionCell"
     
     // instructors stub data
     var instructors: [Instructor] = [
